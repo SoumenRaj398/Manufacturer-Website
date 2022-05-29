@@ -18,7 +18,7 @@ const client = new MongoClient(uri, {
 });
 
 function verifyJWT(req, res, next) {
-  const  = req.headers.authorization;
+  const authHeader  = req.headers.authorization;
   if (!authHeader) {
     return res.status(401).send({ message: "UnAuthorized access" });
   }
@@ -76,6 +76,7 @@ async function run() {
         req.status(403).send({ message: "Forbidden" });
       }
     });
+    //
 
     app.put("/user/:email", async (req, res) => {
       const email = req.params.email;
